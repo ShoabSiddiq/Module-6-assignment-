@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Registered Users</title>
+</head>
+<body>
+	<table>
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Email</th>
+				<th>Profile Picture</th>
+				<th>Date and Time</th>
+			</tr>
+		</thead>
+		<tbody>
+			<?php
+			$file = fopen('users.csv', 'r');
+			while(($data = fgetcsv($file)) !== FALSE) {
+				echo '<tr>';
+				foreach($data as $value) {
+					echo '<td>' . $value . '</td>';
+				}
+				echo '</tr>';
+			}
+			fclose($file);
+			?>
+		</tbody>
+	</table>
+</body>
+</html>
